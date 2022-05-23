@@ -11,6 +11,6 @@ ENV VERSION ${version}
 #COPY ./scripts/ /bin
 #COPY src/main/java/resources /bin/log4j2.properties
 
-ADD target/producerfunction-1.0-SNAPSHOT.jar /
+ADD target/Producer19-5-2022-1.0-SNAPSHOT.jar /
 
-CMD ["java", "-jar" ,  "/producerfunction-1.0-SNAPSHOT.jar"]
+CMD ["java", "-jar" ,  "/Producer19-5-2022-1.0-SNAPSHOT.jar"]

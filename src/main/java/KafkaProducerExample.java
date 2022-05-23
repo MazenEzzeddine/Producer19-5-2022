@@ -48,7 +48,12 @@ public class KafkaProducerExample {
        /* increaseExponentially();
         remainConstantFor1Min();*/
 
-        OldWorkload.startWorkload();
+        //OldWorkload.startWorkload();
+
+        fiveEpsToeachPartitonForFiveSeconds();
+
+        P1P216EPSOthers5EPSFor1min();
+        fiveEpsToeachPartitonForFiveSeconds();
        // IncreaseDecreaseLinearly.startWorkload();
 
 
@@ -293,15 +298,15 @@ public class KafkaProducerExample {
             for (int j = 0; j < 5; j++) {
                 Customer custm = new Customer(rnd.nextInt(), UUID.randomUUID().toString());
                 producer.send(new ProducerRecord<String, Customer>(config.getTopic(),
-                        0, null, UUID.randomUUID().toString(), custm));
+                        0, System.currentTimeMillis(), UUID.randomUUID().toString(), custm));
                 producer.send(new ProducerRecord<String, Customer>(config.getTopic(),
-                        1, null, UUID.randomUUID().toString(), custm));
+                        1, System.currentTimeMillis(), UUID.randomUUID().toString(), custm));
                 producer.send(new ProducerRecord<String, Customer>(config.getTopic(),
-                        2, null, UUID.randomUUID().toString(), custm));
+                        2, System.currentTimeMillis(), UUID.randomUUID().toString(), custm));
                 producer.send(new ProducerRecord<String, Customer>(config.getTopic(),
-                        3, null, UUID.randomUUID().toString(), custm));
+                        3, System.currentTimeMillis(), UUID.randomUUID().toString(), custm));
                 producer.send(new ProducerRecord<String, Customer>(config.getTopic(),
-                        4, null, UUID.randomUUID().toString(), custm));
+                        4, System.currentTimeMillis(), UUID.randomUUID().toString(), custm));
                 //log.info("Sending the following customer {}", custm.toString());
             }
             log.info("sent 5 events per sec to each partition");
@@ -329,18 +334,18 @@ public class KafkaProducerExample {
 
             for (int j = 0; j < 16; j++) {
                 producer.send(new ProducerRecord<String, Customer>(config.getTopic(),
-                        0, null, UUID.randomUUID().toString(), custm));
+                        0, System.currentTimeMillis(), UUID.randomUUID().toString(), custm));
                 producer.send(new ProducerRecord<String, Customer>(config.getTopic(),
-                        1, null, UUID.randomUUID().toString(), custm));
+                        1, System.currentTimeMillis(), UUID.randomUUID().toString(), custm));
             }
 
             for (int j = 0; j < 5; j++) {
                 producer.send(new ProducerRecord<String, Customer>(config.getTopic(),
-                        2, null, UUID.randomUUID().toString(), custm));
+                        2, System.currentTimeMillis(), UUID.randomUUID().toString(), custm));
                 producer.send(new ProducerRecord<String, Customer>(config.getTopic(),
-                        3, null, UUID.randomUUID().toString(), custm));
+                        3, System.currentTimeMillis(), UUID.randomUUID().toString(), custm));
                 producer.send(new ProducerRecord<String, Customer>(config.getTopic(),
-                        4, null, UUID.randomUUID().toString(), custm));
+                        4, System.currentTimeMillis(), UUID.randomUUID().toString(), custm));
                 //log.info("Sending the following customer {}", custm.toString());
             }
             log.info("sent 16 P1 P2 and 5 Otherwise  events per sec to each partition");
