@@ -36,7 +36,8 @@ public class KafkaProducerExample {
 
 
         fifteenEpsToeachPartitonForTwoMinutes();
-        P1P290EPSOthers15EPSForTwoMinutes();
+        P1P260EPSOthers15EPSForTwoMinutes();
+        P1P2P360EPSOthers15EPSForTwoMinutes();
 
         // over all the workload
 
@@ -121,7 +122,7 @@ public class KafkaProducerExample {
     }
 
 
-    static void P1P290EPSOthers15EPSForTwoMinutes() throws InterruptedException {
+    static void P1P260EPSOthers15EPSForTwoMinutes() throws InterruptedException {
         log.info("I will send five events per seconds for each partition for a " +
                 "duration of 1 minute ");
 
@@ -132,7 +133,7 @@ public class KafkaProducerExample {
         while (Duration.between(start, end).toMinutes() <= 1) {
             Customer custm = new Customer(rnd.nextInt(), UUID.randomUUID().toString());
 
-            for (int j = 0; j < 90; j++) {
+            for (int j = 0; j < 60; j++) {
                 producer.send(new ProducerRecord<String, Customer>(config.getTopic(),
                         0, System.currentTimeMillis(), UUID.randomUUID().toString(), custm));
                 producer.send(new ProducerRecord<String, Customer>(config.getTopic(),
@@ -142,6 +143,46 @@ public class KafkaProducerExample {
             for (int j = 0; j < 15; j++) {
                 producer.send(new ProducerRecord<String, Customer>(config.getTopic(),
                         2, System.currentTimeMillis(), UUID.randomUUID().toString(), custm));
+                producer.send(new ProducerRecord<String, Customer>(config.getTopic(),
+                        3, System.currentTimeMillis(), UUID.randomUUID().toString(), custm));
+                producer.send(new ProducerRecord<String, Customer>(config.getTopic(),
+                        4, System.currentTimeMillis(), UUID.randomUUID().toString(), custm));
+                //log.info("Sending the following customer {}", custm.toString());
+            }
+            log.info("sent 90 EPS  P1 P2 and 15 Otherwise  events per sec to each partition");
+            log.info("sleeping for one seconds ");
+            Thread.sleep(1000);
+
+            end = now();
+        }
+        log.info("End sent 16 P1 P2 and 5 Otherwise  events per sec to each partition ");
+        log.info("==========================================");
+
+    }
+
+
+    static void P1P2P360EPSOthers15EPSForTwoMinutes() throws InterruptedException {
+        log.info("I will send five events per seconds for each partition for a " +
+                "duration of 1 minute ");
+
+
+        eventsPerSeconds = 100;
+        Instant start = now();
+        Instant end = now();
+        while (Duration.between(start, end).toMinutes() <= 1) {
+            Customer custm = new Customer(rnd.nextInt(), UUID.randomUUID().toString());
+
+            for (int j = 0; j < 60; j++) {
+                producer.send(new ProducerRecord<String, Customer>(config.getTopic(),
+                        0, System.currentTimeMillis(), UUID.randomUUID().toString(), custm));
+                producer.send(new ProducerRecord<String, Customer>(config.getTopic(),
+                        1, System.currentTimeMillis(), UUID.randomUUID().toString(), custm));
+                producer.send(new ProducerRecord<String, Customer>(config.getTopic(),
+                        2, System.currentTimeMillis(), UUID.randomUUID().toString(), custm));
+            }
+
+            for (int j = 0; j < 15; j++) {
+
                 producer.send(new ProducerRecord<String, Customer>(config.getTopic(),
                         3, System.currentTimeMillis(), UUID.randomUUID().toString(), custm));
                 producer.send(new ProducerRecord<String, Customer>(config.getTopic(),
