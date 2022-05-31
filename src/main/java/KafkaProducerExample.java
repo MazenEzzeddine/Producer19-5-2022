@@ -34,10 +34,20 @@ public class KafkaProducerExample {
 
 
 
-
+/*
         fifteenEpsToeachPartitonForTwoMinutes();
         P1P260EPSOthers15EPSForTwoMinutes();
-        P1P2P360EPSOthers15EPSForTwoMinutes();
+        P1P2P360EPSOthers15EPSForTwoMinutes();*/
+
+
+        ModifiedWorkload md = new ModifiedWorkload();
+        md.start();
+
+
+
+
+
+
 
         // over all the workload
 

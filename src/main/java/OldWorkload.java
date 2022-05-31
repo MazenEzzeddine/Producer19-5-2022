@@ -10,11 +10,8 @@ import java.util.UUID;
 public class OldWorkload {
 
     public static void  startWorkload() throws IOException, URISyntaxException, InterruptedException {
-
         final Logger log = LogManager.getLogger(KafkaProducerExample.class);
-
         Workload wrld = new Workload();
-
         Random rnd = new Random();
         // over all the workload
         for (int i = 0; i < wrld.getDatax().size(); i++) {
@@ -26,14 +23,11 @@ public class OldWorkload {
                KafkaProducerExample.
                        producer.send(new ProducerRecord<String, Customer>(KafkaProducerExample.config.getTopic(),
                         null, null, UUID.randomUUID().toString(), custm));
-
               /*  log.info("sleeping for {} seconds ms", (long)(1000/(Math.ceil(wrld.getDatay().get(i)))));
                   Thread.sleep((long)(1000/(Math.ceil(wrld.getDatay().get(i)))));*/
             }
             log.info("sent {} events Per Second ", Math.ceil(wrld.getDatay().get(i)));
-
             Thread.sleep(KafkaProducerExample.config.getDelay());
         }
     }
-
 }

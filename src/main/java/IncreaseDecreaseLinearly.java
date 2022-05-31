@@ -85,17 +85,12 @@ public class IncreaseDecreaseLinearly {
             Thread.sleep(1000);
             end = now();
         }
-
-
-
         log.info("End increaseLinearlyFor1Min ");
         log.info("eventsPerSeconds {}", eventsPerSeconds);
         log.info("==========================================");
-
     }
 
     private static void remainConstantFor1min() throws InterruptedException {
-
         Instant start = now();
         Instant end = now();
         log.info("eventsPerSeconds {}", eventsPerSeconds);
@@ -113,20 +108,14 @@ public class IncreaseDecreaseLinearly {
             end = now();
         }
 
-
-
         log.info("End @ eventsPerSeconds, constant  for 1 min ");
         log.info("eventsPerSeconds {}", eventsPerSeconds);
-
         log.info("==========================================");
-
-
     }
 
     private static  void decreaseLinearlyFor1Min() throws InterruptedException {
         Instant start = now();
         Instant end = now();
-
         log.info("eventsPerSeconds {}", eventsPerSeconds);
         log.info("@ eventsPerSeconds, increase linearly  for 1 min {}", eventsPerSeconds);
         while (Duration.between(start, end).toMinutes() <= 0) {
@@ -146,8 +135,6 @@ public class IncreaseDecreaseLinearly {
         log.info("End @ eventsPerSeconds, decrease linealry  for 1 min ");
         log.info("eventsPerSeconds {}", eventsPerSeconds);
         log.info("==========================================");
-
-
     }
 
 
