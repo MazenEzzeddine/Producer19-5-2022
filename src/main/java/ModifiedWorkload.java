@@ -12,23 +12,17 @@ import static java.time.Instant.now;
 public class ModifiedWorkload {
 
 
-    private  Random rnd;
+    private Random rnd;
+    int events = 0;
 
-    int events=0;
-    
     private int eventsPerSeconds;
 
     public ModifiedWorkload() {
-        rnd= new Random();
+        rnd = new Random();
     }
 
 
-
-
-
-   
     private static final Logger log = LogManager.getLogger(KafkaProducerExample.class);
-
 
 
     public void start() throws InterruptedException {
@@ -40,8 +34,6 @@ public class ModifiedWorkload {
         P1P2P360EPSOthers15EPSForTwoMinutes();
 
     }
-
-
 
 
     private void fifteenEpsToeachPartitonForOneMinutes() throws InterruptedException {
@@ -81,8 +73,6 @@ public class ModifiedWorkload {
     private void fifteenEpsIncreaseLinearlyToeachPartitonForOneMinutes() throws InterruptedException {
         log.info("I will send 15 to P2, P3, P4 and increase linearly  events per seconds for eP0, P1 " +
                 "for 45 secs ");
-
-
         Instant start = now();
         Instant end = now();
 
@@ -112,7 +102,7 @@ public class ModifiedWorkload {
                         4, System.currentTimeMillis(), UUID.randomUUID().toString(), custm));
                 //log.info("Sending the following customer {}", custm.toString());
             }
-           log.info("sent 15 to P2,3,4 and increase liearly to 60 for P1,2");
+            log.info("sent 15 to P2,3,4 and increase liearly to 60 for P1,2");
             log.info("sleeping for one seconds ");
             //events++;
             Thread.sleep(1000);
@@ -120,19 +110,14 @@ public class ModifiedWorkload {
             end = now();
             events++;
         }
-        log.info("End " );
+        log.info("End ");
         log.info("==========================================");
 
     }
 
 
-
-
-
     private void P1P260EPSOthers15EPSForOneMinutes() throws InterruptedException {
         log.info("I will send 60  for P0,P1 and 15 for others for 75 secs ");
-
-
         eventsPerSeconds = 15;
         Instant start = now();
         Instant end = now();
@@ -165,7 +150,6 @@ public class ModifiedWorkload {
         log.info("==========================================");
 
     }
-
 
 
     private void P1P260EPSOthers15EPSForOneMinutesIncrease() throws InterruptedException {
