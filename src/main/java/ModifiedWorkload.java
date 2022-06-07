@@ -64,14 +64,14 @@ public class ModifiedWorkload {
 
             end = now();
         }
-        log.info("End 15 events per seconds for each partition ");
+        log.info("End 15 events per seconds for each partition for 75 seconds ");
         log.info("==========================================");
 
     }
 
 
     private void fifteenEpsIncreaseLinearlyToeachPartitonForOneMinutes() throws InterruptedException {
-        log.info("I will send 15 to P2, P3, P4 and increase linearly  events per seconds for eP0, P1 " +
+        log.info("I will send 15 to P2, P3, P4 and increase linearly  events per seconds for P0, P1 " +
                 "for 45 secs ");
         Instant start = now();
         Instant end = now();
@@ -102,7 +102,7 @@ public class ModifiedWorkload {
                         4, System.currentTimeMillis(), UUID.randomUUID().toString(), custm));
                 //log.info("Sending the following customer {}", custm.toString());
             }
-            log.info("sent 15 to P2,3,4 and increase liearly to 60 for P1,2");
+            log.info("sent 15 to P2,3,4 and increase linearly to 60 for P1,2");
             log.info("sleeping for one seconds ");
             //events++;
             Thread.sleep(1000);
@@ -110,9 +110,8 @@ public class ModifiedWorkload {
             end = now();
             events++;
         }
-        log.info("End ");
+        log.info("End sent 15 to P2,3,4 and increase linearly to 60 for P1,2 for 45 seconds");
         log.info("==========================================");
-
     }
 
 
@@ -203,8 +202,8 @@ public class ModifiedWorkload {
 
 
     private void P1P2P360EPSOthers15EPSForTwoMinutes() throws InterruptedException {
-        log.info("I will send five events per seconds for each partition for a " +
-                "duration of 1 minute ");
+        log.info("I will 60   five events per seconds for  partitions 0,1, 2 and 15 for P2,P3 for a " +
+                "duration of 2  minute ");
 
 
         Instant start = now();
@@ -229,13 +228,13 @@ public class ModifiedWorkload {
                         4, System.currentTimeMillis(), UUID.randomUUID().toString(), custm));
                 //log.info("Sending the following customer {}", custm.toString());
             }
-            log.info("sent 90 EPS  P1 P2 and 15 Otherwise  events per sec to each partition");
+            log.info("sent 60  EPS  P0 P1 P2 and 15 Otherwise  ");
             log.info("sleeping for one seconds ");
             Thread.sleep(1000);
 
             end = now();
         }
-        log.info("End sent 16 P1 P2 and 5 Otherwise  events per sec to each partition ");
+        log.info("End ent 60  EPS  P0 P1 P2 and 15 Otherwise");
         log.info("==========================================");
 
     }
